@@ -1,0 +1,15 @@
+appId: "app.example"
+
+productName: "Example Name"
+
+copyright: "Copyright © Example"
+
+directories:
+  buildResources: "assets"
+
+publish:
+  provider: "s3"
+  bucket: "sample-bucket"
+
+files:
+  - "!node_modules${/*}"

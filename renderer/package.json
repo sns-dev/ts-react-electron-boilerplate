@@ -1,0 +1,52 @@
+{
+  "name": "sample-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.0",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "start": "cross-env BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "build-main": "cd ../main && yarn build",
+    "copy-main": "run-script-os",
+    "copy-main:windows": "copy ..\\main\\dist\\electron.js .\\public\\",
+    "copy-main:darwin:linux": "cp ../main/dist/electron.js ./public/",
+    "package": "yarn build-main && yarn copy-main && yarn build",
+    "build-electron": "yarn package && electron-builder",
+    "release": "yarn package && electron-builder --publush=always"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "cross-env": "^7.0.2",
+    "electron": "^11.0.0",
+    "electron-builder": "^22.9.1",
+    "run-script-os": "^1.1.3"
+  }
+}
