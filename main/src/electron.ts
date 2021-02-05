@@ -7,6 +7,7 @@ const createWindow = async () => {
   const window = new BrowserWindow({
     width: 720,
     height: 480,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -14,7 +15,9 @@ const createWindow = async () => {
     },
   });
 
-  await window.loadURL(formatUrl("#/"));
+  window.on("ready-to-show", () => window.show());
+  window.loadURL(formatUrl("#/"));
+
   return window;
 };
 
